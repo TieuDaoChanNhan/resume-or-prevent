@@ -1,0 +1,32 @@
+# H2 evaluation: recovery adapter, cap 80, runtime L3 (carryover + announced + last_action),
+# same strategy_prompt the adapter was trained with (it is part of the training context,
+# only assistant turns are loss-masked -- see train/dataloader.py). Held-out 50, never seen
+# during trace generation or training.
+# Plain rerun of configs/phase2_eval_180/_REC_cap80.yaml with nothing changed except output
+# paths/names, for symmetry with the cap-25 rerun (configs/phase2_eval_180_rerun/_RECrerun_cap25.yaml).
+output_dir: <DATA_DIR>/individual_project_phase2/eval_180_rerun/RECrerun_cap80
+run_name: RECrerun_cap80
+seed_start: 21812
+cache_db_path: <DATA_DIR>/individual_project_phase2/eval_180_rerun/cache_RECrerun_cap80.sqlite
+max_concurrent_runs: 16
+
+agents:
+  - name: RECrerun_cap80
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 80
+    persistent_state: false
+    state_carryover_on_cap: true
+    announce_carryover: true
+    resumption_metadata: true
+    strategy_prompt: recovery
+    llm:
+      model: openai/recovery
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+
+task_families:
+  - knapsack

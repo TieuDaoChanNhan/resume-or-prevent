@@ -1,0 +1,22 @@
+# Baseline (no strategy prompt at all): identical agent settings to the paper's own
+# configs/generate_traces/knapsack_stateless.yaml (persistent_state: false, no carryover,
+# no strategy_prompt), but pointed at OUR phase2_trainpool instances so it is directly
+# task-matched/paired with PREV_L0 and REC_L0 on the exact same 5/20/30 tasks.
+output_dir: <DATA_DIR>/individual_project_phase2/pilot/NONE_L0_cap25
+run_name: NONE_L0_cap25
+seed_start: 42
+cache_db_path: <DATA_DIR>/individual_project_phase2/pilot/cache_NONE_L0_cap25.sqlite
+
+agents:
+  - name: NONE_L0_cap25
+    max_turns: 40
+    timeout_s: 300
+    max_tool_calls: 25
+    persistent_state: false
+    llm:
+      model: gemini/gemini-3-flash-preview
+      cache_enabled: true
+      max_concurrent_requests: 4
+
+task_families:
+  - knapsack

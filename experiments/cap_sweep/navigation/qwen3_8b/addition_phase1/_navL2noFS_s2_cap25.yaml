@@ -1,0 +1,24 @@
+# addition-phase1 E4: cloned from experiments/cap_sweep/navigation/qwen3_8b/navb2_ladder/_navL2_cap25.yaml; changed: carryover_fewshot=False, llm.seed=2
+output_dir: ../results/addition_phase1/navL2noFS_s2_cap25
+run_name: navL2noFS_s2_cap25
+seed_start: 21812
+cache_db_path: ../results/addition_phase1/cache_navL2noFS_s2_cap25.sqlite
+agents:
+- name: navL2noFS_s2_cap25
+  max_turns: 40
+  timeout_s: 3000
+  max_tool_calls: 25
+  persistent_state: false
+  state_carryover_on_cap: true
+  announce_carryover: true
+  llm:
+    model: openai/navpersistent
+    cache_enabled: false
+    max_concurrent_requests: 16
+    max_tokens: 8192
+    temperature: 0.2
+    timeout_s: 600
+    seed: 2
+  carryover_fewshot: false
+task_families:
+- navigation

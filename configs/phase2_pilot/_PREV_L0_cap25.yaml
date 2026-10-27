@@ -1,0 +1,23 @@
+# Phase 2 pilot: prevention strategy on L0 (plain reset, no carryover). Teacher is told
+# to budget each block under the cap and print STATE; the runtime genuinely never keeps
+# anything across turns, so this is the "clean" prevention cell.
+output_dir: <DATA_DIR>/individual_project_phase2/pilot/PREV_L0_cap25
+run_name: PREV_L0_cap25
+seed_start: 42
+cache_db_path: <DATA_DIR>/individual_project_phase2/pilot/cache_PREV_L0_cap25.sqlite
+
+agents:
+  - name: PREV_L0_cap25
+    max_turns: 40
+    timeout_s: 300
+    max_tool_calls: 25
+    persistent_state: false
+    strategy_prompt: prevention
+    strategy_block_calls: 20
+    llm:
+      model: gemini/gemini-3-flash-preview
+      cache_enabled: true
+      max_concurrent_requests: 4
+
+task_families:
+  - knapsack

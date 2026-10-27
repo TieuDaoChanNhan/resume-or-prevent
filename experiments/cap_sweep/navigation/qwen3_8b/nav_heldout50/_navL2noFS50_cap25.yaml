@@ -1,0 +1,29 @@
+# Navigation b=2 (16 paper instances, neighbors_batch_max=2) with cap-boundary carryover.
+# Same as experiments/cap_sweep/navigation/qwen3_8b/batch2/_navb2_PS_cap25.yaml except the
+# carryover flags, output paths and served model name.
+# Ablation E4 (worked example removed from L2), re-run on the nav_heldout50 n=50 pool;
+# cloned from nav_heldout50/_navL250_cap25.yaml, added: carryover_fewshot=False.
+output_dir: ../results/nav_heldout50_ladder/navL2noFS50_cap25
+run_name: navL2noFS50_cap25
+seed_start: 21812
+cache_db_path: ../results/nav_heldout50_ladder/cache_navL2noFS50_cap25.sqlite
+
+agents:
+  - name: navL2noFS50_cap25
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    announce_carryover: true
+    llm:
+      model: openai/navpersistent
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+    carryover_fewshot: false
+
+task_families:
+  - navigation

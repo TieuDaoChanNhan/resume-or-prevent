@@ -1,0 +1,22 @@
+# Phase 2 pilot: recovery strategy on L0. active_globals/last_action are never in the
+# observation here at all (no carryover enabled) -- recovery's own conditional degrades
+# to "rebuild from printed output", which is the intended behaviour, not a bug.
+output_dir: <DATA_DIR>/individual_project_phase2/pilot/REC_L0_cap25
+run_name: REC_L0_cap25
+seed_start: 42
+cache_db_path: <DATA_DIR>/individual_project_phase2/pilot/cache_REC_L0_cap25.sqlite
+
+agents:
+  - name: REC_L0_cap25
+    max_turns: 40
+    timeout_s: 300
+    max_tool_calls: 25
+    persistent_state: false
+    strategy_prompt: recovery
+    llm:
+      model: gemini/gemini-3-flash-preview
+      cache_enabled: true
+      max_concurrent_requests: 4
+
+task_families:
+  - knapsack

@@ -1,0 +1,12 @@
+.venv/
+.venv
+.vendor-info
+*.sqlite
+__pycache__/
+experiments/**/tasks/
+*.log
+*.err
+.env
+.env.*
+!.env.example
+out/

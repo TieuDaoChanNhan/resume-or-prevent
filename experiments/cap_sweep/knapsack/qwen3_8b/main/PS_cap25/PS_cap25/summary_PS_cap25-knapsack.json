@@ -1,0 +1,58 @@
+{
+  "average_is_solved": 0.0,
+  "average_runtime": 1043.9418564624398,
+  "average_steps": 36.84,
+  "average_total_tokens": 542903.56,
+  "metrics": {
+    "agent_value": {
+      "mean": 79.52,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 865.0
+    },
+    "optimal_value": {
+      "mean": 991.88,
+      "median": 914.0,
+      "min": 609.0,
+      "max": 1563.0
+    },
+    "optimality_gap": {
+      "mean": 912.36,
+      "median": 897.0,
+      "min": 149.0,
+      "max": 1474.0
+    },
+    "weight_used": {
+      "mean": 5.88,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 83.0
+    },
+    "capacity": {
+      "mean": 82.76,
+      "median": 83.0,
+      "min": 32.0,
+      "max": 147.0
+    },
+    "items_taken_count": {
+      "mean": 0.36,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 4.0
+    },
+    "inspected_count": {
+      "mean": 25.44,
+      "median": 24.0,
+      "min": 16.0,
+      "max": 44.0
+    },
+    "score": {
+      "mean": 0.07334063313883925,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.8375136314067612
+    }
+  },
+  "num_tasks_executed": 25,
+  "num_tasks_solved": 0
+}

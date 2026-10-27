@@ -1,0 +1,26 @@
+# Phase 2 pilot: prevention strategy on L3 (carryover + announced + last_action). If
+# prevention truly never gets cut, this cell should behave almost identically to
+# PREV_L0 -- that equivalence is itself one of the pilot's checks.
+output_dir: <DATA_DIR>/individual_project_phase2/pilot/PREV_L3_cap25
+run_name: PREV_L3_cap25
+seed_start: 42
+cache_db_path: <DATA_DIR>/individual_project_phase2/pilot/cache_PREV_L3_cap25.sqlite
+
+agents:
+  - name: PREV_L3_cap25
+    max_turns: 40
+    timeout_s: 300
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    announce_carryover: true
+    resumption_metadata: true
+    strategy_prompt: prevention
+    strategy_block_calls: 20
+    llm:
+      model: gemini/gemini-3-flash-preview
+      cache_enabled: true
+      max_concurrent_requests: 4
+
+task_families:
+  - knapsack

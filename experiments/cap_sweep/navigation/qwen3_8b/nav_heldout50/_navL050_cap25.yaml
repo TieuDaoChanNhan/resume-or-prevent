@@ -1,0 +1,27 @@
+# Navigation b=2 (16 paper instances, neighbors_batch_max=2) with cap-boundary carryover.
+# Same as experiments/cap_sweep/navigation/qwen3_8b/batch2/_navb2_PS_cap25.yaml except the
+# carryover flags, output paths and served model name.
+# L0 (reset baseline, no carryover at all on a cap cut) for the n=50 Navigation ladder;
+# cloned from nav_heldout50/_navL150_cap25.yaml with state_carryover_on_cap removed, the
+# same way Knapsack's own _L0_cap25.yaml has no carryover flag at all.
+output_dir: ../results/nav_heldout50_ladder/navL050_cap25
+run_name: navL050_cap25
+seed_start: 21812
+cache_db_path: ../results/nav_heldout50_ladder/cache_navL050_cap25.sqlite
+
+agents:
+  - name: navL050_cap25
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 25
+    persistent_state: false
+    llm:
+      model: openai/navpersistent
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+
+task_families:
+  - navigation

@@ -1,0 +1,31 @@
+# H2 evaluation: prevention adapter, cap 25, runtime L3 (carryover + announced + last_action),
+# same strategy_prompt the adapter was trained with (it is part of the training context,
+# only assistant turns are loss-masked -- see train/dataloader.py). Held-out 50, never seen
+# during trace generation or training (seed_start=92000 pool).
+output_dir: <DATA_DIR>/individual_project_phase2/eval/PREV_cap25
+run_name: PREV_cap25
+seed_start: 21812
+cache_db_path: <DATA_DIR>/individual_project_phase2/eval/cache_PREV_cap25.sqlite
+max_concurrent_runs: 16
+
+agents:
+  - name: PREV_cap25
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    announce_carryover: true
+    resumption_metadata: true
+    strategy_prompt: prevention
+    strategy_block_calls: 20
+    llm:
+      model: openai/prevention
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+
+task_families:
+  - knapsack

@@ -1,0 +1,23 @@
+output_dir: ../results/heldout50_ladder_stateless/SL2_cap25
+run_name: SL2_cap25
+seed_start: 21812
+cache_db_path: ../results/heldout50_ladder_stateless/cache_SL2_cap25.sqlite
+
+agents:
+  - name: SL2_cap25
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    announce_carryover: true
+    llm:
+      model: openai/stateless
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+
+task_families:
+  - knapsack

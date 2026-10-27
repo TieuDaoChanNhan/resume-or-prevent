@@ -1,0 +1,29 @@
+agents:
+- agent_type: codeact
+  announce_carryover: false
+  llm:
+    backoff_base_s: 0.5
+    backoff_max_s: 30.0
+    cache_enabled: false
+    jitter_s: 0.2
+    max_concurrent_requests: 16
+    max_retries: 6
+    max_tokens: 8192
+    model: openai/persistent
+    seed: null
+    temperature: 0.2
+    timeout_s: 600.0
+  max_tool_calls: 25
+  max_turns: 40
+  name: PP_cap25
+  persistent_state: true
+  resumption_metadata: false
+  state_carryover_on_cap: false
+  timeout_s: 3000.0
+cache_db_path: experiments/cap_sweep/knapsack/qwen3_8b/main/cache_PP_cap25.sqlite
+max_concurrent_runs: 4
+output_dir: experiments/cap_sweep/knapsack/qwen3_8b/main/PP_cap25
+run_name: PP_cap25
+seed_start: 21812
+task_families:
+- knapsack

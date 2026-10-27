@@ -1,0 +1,22 @@
+# addition-phase1 E6: cloned from experiments/cap_sweep/navigation/qwen3_8b/navb2_ladder/_navL1_cap25.yaml; changed: llm.seed=3
+output_dir: ../results/addition_phase1/navL1_s3_cap25
+run_name: navL1_s3_cap25
+seed_start: 21812
+cache_db_path: ../results/addition_phase1/cache_navL1_s3_cap25.sqlite
+agents:
+- name: navL1_s3_cap25
+  max_turns: 40
+  timeout_s: 3000
+  max_tool_calls: 25
+  persistent_state: false
+  state_carryover_on_cap: true
+  llm:
+    model: openai/navpersistent
+    cache_enabled: false
+    max_concurrent_requests: 16
+    max_tokens: 8192
+    temperature: 0.2
+    timeout_s: 600
+    seed: 3
+task_families:
+- navigation

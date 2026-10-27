@@ -1,0 +1,25 @@
+# Navigation b=2 (16 paper instances, neighbors_batch_max=2) with cap-boundary carryover.
+# Same as experiments/cap_sweep/navigation/qwen3_8b/batch2/_navb2_PS_cap25.yaml except the
+# carryover flags, output paths and served model name.
+output_dir: ../results/navb2_ladder/navL1_cap25
+run_name: navL1_cap25
+seed_start: 21812
+cache_db_path: ../results/navb2_ladder/cache_navL1_cap25.sqlite
+
+agents:
+  - name: navL1_cap25
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    llm:
+      model: openai/navpersistent
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+
+task_families:
+  - navigation

@@ -1,0 +1,22 @@
+# addition-phase1 E2: cloned from experiments/cap_sweep/knapsack/qwen3_8b/heldout50_ladder/_L2b3_cap25.yaml; changed: llm.model=openai/base
+output_dir: ../results/addition_phase1/baseL2_cap25
+run_name: baseL2_cap25
+seed_start: 21812
+cache_db_path: ../results/addition_phase1/cache_baseL2_cap25.sqlite
+agents:
+- name: baseL2_cap25
+  max_turns: 40
+  timeout_s: 3000
+  max_tool_calls: 25
+  persistent_state: false
+  state_carryover_on_cap: true
+  announce_carryover: true
+  llm:
+    model: openai/base
+    cache_enabled: false
+    max_concurrent_requests: 16
+    max_tokens: 8192
+    temperature: 0.2
+    timeout_s: 600
+task_families:
+- knapsack

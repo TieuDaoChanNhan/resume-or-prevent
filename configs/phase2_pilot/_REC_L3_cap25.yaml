@@ -1,0 +1,25 @@
+# Phase 2 pilot: recovery strategy on L3, its best-supported runtime -- cap cuts survive
+# one turn and are announced, with the last completed tool call. This is recovery's
+# main cell.
+output_dir: <DATA_DIR>/individual_project_phase2/pilot/REC_L3_cap25
+run_name: REC_L3_cap25
+seed_start: 42
+cache_db_path: <DATA_DIR>/individual_project_phase2/pilot/cache_REC_L3_cap25.sqlite
+
+agents:
+  - name: REC_L3_cap25
+    max_turns: 40
+    timeout_s: 300
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    announce_carryover: true
+    resumption_metadata: true
+    strategy_prompt: recovery
+    llm:
+      model: gemini/gemini-3-flash-preview
+      cache_enabled: true
+      max_concurrent_requests: 4
+
+task_families:
+  - knapsack

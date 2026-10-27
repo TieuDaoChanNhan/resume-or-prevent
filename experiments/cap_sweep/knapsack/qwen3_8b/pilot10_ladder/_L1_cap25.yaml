@@ -1,0 +1,22 @@
+output_dir: ../results/pilot10_ladder/L1_cap25
+run_name: L1_cap25
+seed_start: 21812
+cache_db_path: ../results/pilot10_ladder/cache_L1_cap25.sqlite
+
+agents:
+  - name: L1_cap25
+    max_turns: 40
+    timeout_s: 3000
+    max_tool_calls: 25
+    persistent_state: false
+    state_carryover_on_cap: true
+    llm:
+      model: openai/persistent
+      cache_enabled: false
+      max_concurrent_requests: 16
+      max_tokens: 8192
+      temperature: 0.2
+      timeout_s: 600
+
+task_families:
+  - knapsack

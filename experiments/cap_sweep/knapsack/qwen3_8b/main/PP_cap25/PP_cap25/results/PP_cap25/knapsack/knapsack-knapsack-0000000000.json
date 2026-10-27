@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "error": null,
+  "result": {
+    "is_solved": false,
+    "score": 0.5855717574827322,
+    "metrics": {
+      "agent_value": 763,
+      "optimal_value": 1303,
+      "optimality_gap": 540,
+      "weight_used": 41,
+      "capacity": 143,
+      "items_taken_count": 3,
+      "inspected_count": 60
+    }
+  },
+  "finished_at": 241904.409987501,
+  "started_at": 241699.936247507
+}
